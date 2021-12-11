@@ -10,6 +10,7 @@ public class Main {
 //        task5();
 //        task6();
         task7();
+        task8();
     }
 
 
@@ -74,11 +75,26 @@ public class Main {
     public static void task7() {
         String first = "135";
         String second = "246";
-        StringBuilder result = new StringBuilder();
+        StringBuilder result = new StringBuilder("123456");
 
+        for (int i = 0; i < 3; i=i+2) {
+            result.setCharAt(i,first.charAt(i));
+            result.setCharAt((i+1),second.charAt(i));
+                    }
+        System.out.println(result);
 
 
     }
+    public static void task8() {
+        String task = "aabccddefgghiijjkk";
+        char[] massiveTask = task.toCharArray();
+        for (int i = 0; i < massiveTask.length-1; i++) {
+            if (massiveTask[i]==massiveTask[i+1]) {
+                System.out.print(massiveTask[i]);
+            }
 
+        }
+
+    }
 
 }
