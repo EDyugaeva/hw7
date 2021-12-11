@@ -1,14 +1,13 @@
 package ru.skypro;
 
-import java.util.Arrays;
-
 public class Main {
 
     public static void main(String[] args) {
 //        task1();
 //        task4();
 //        task5();
-//        task6();
+        task6();
+        System.out.println(" ");
         task7();
         task8();
     }
@@ -60,36 +59,52 @@ public class Main {
     public static void task6() {
         String fullName = "ivanov ivan ivanovich";
         char[] rightName = fullName.toCharArray();
-        rightName[0]=Character.toUpperCase(rightName[0]);
         for (int i = 0; i < rightName.length; i++) {
             char s = rightName[i];
-            if (s == 32) {
-                rightName[i + 1] = Character.toUpperCase(rightName[i + 1]);
+            if (Character.isLowerCase(s) && (i == 0 || rightName[i - 1] == 32 )) {
+                rightName[i] = Character.toUpperCase(rightName[i]);
             }
-            System.out.print(rightName[i]);
         }
+        fullName = new String(rightName);
+        System.out.print("Верное написание ФИО сотрудника" + fullName);
 //        String fullName1 = Arrays.toString(rightName);
 //        System.out.println("Верное написание ФИО сотрудника " + fullName1);
 
-    }
-    public static void task7() {
-        String first = "135";
-        String second = "246";
-        StringBuilder result = new StringBuilder("123456");
+        String[] words = fullName.split(" ");
+        for (int i = 0; i < words.length; i++) {
+            char[] chars = words[i].toCharArray();
+            if (Character.isLowerCase(chars[0])) {
+                chars[0] = Character.toUpperCase(chars[0]);
+                words[i] = new String(chars);
+            }
+            System.out.println(String.join(" ", words));
 
-        for (int i = 0; i < 3; i=i+2) {
-            result.setCharAt(i,first.charAt(i));
-            result.setCharAt((i+1),second.charAt(i));
-                    }
+        }
+
+
+    }
+
+    public static void task7() {
+        String s1 = "135";
+        String s2 = "246";
+        char[] chars1 = s1.toCharArray();
+        char[] chars2 = s2.toCharArray();
+        StringBuilder sb = new StringBuilder();
+        for (int i = 0; i < chars1.length; i ++) {
+            sb.append(chars1[i]);
+            sb.append(chars2[i]);
+        }
+        String result = sb.toString();
         System.out.println(result);
 
 
     }
+
     public static void task8() {
         String task = "aabccddefgghiijjkk";
         char[] massiveTask = task.toCharArray();
-        for (int i = 0; i < massiveTask.length-1; i++) {
-            if (massiveTask[i]==massiveTask[i+1]) {
+        for (int i = 0; i < massiveTask.length - 1; i++) {
+            if (massiveTask[i] == massiveTask[i + 1]) {
                 System.out.print(massiveTask[i]);
             }
 
